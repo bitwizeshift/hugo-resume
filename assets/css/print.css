@@ -1,0 +1,24 @@
+
+@page {
+  size: A4 portrait;
+}
+
+@page :left {
+  margin-left: 3cm;
+}
+
+@page :right {
+  margin-left: 4cm;
+}
+
+.fn {
+  float: footnote;
+}
+
+.fn {
+  counter-increment: footnote;
+}
+
+h1 {
+  counter-reset: footnote;
+}

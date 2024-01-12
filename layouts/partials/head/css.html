@@ -1,9 +1,28 @@
-{{- with resources.Get "css/main.css" }}
-  {{- if eq hugo.Environment "development" }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}">
-  {{- else }}
-    {{- with . | minify | fingerprint }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-    {{- end }}
-  {{- end }}
-{{- end }}
+{{- $normalize := resources.Get "css/normalize.css" | resources.ExecuteAsTemplate "css/tmp_normalize.out.css" . -}}
+{{- $font := resources.Get "css/font.css" | resources.ExecuteAsTemplate "css/tmp_font.out.css" . -}}
+
+{{- with resources.Get "css/main.css" -}}
+  {{- $style := slice $normalize $font . | resources.Concat "css/style.css" -}}
+  {{- with $style -}}
+    {{- if eq hugo.Environment "development" -}}
+      <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{- else -}}
+      {{- with $style | minify | fingerprint -}}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- with resources.Get "css/print.css" -}}
+  {{- $style := slice $normalize $font . | resources.Concat "css/print.css" -}}
+  {{- with $style -}}
+    {{- if eq hugo.Environment "development" -}}
+      <link rel="stylesheet" media="print" href="{{ .RelPermalink }}">
+    {{- else -}}
+      {{- with $style | minify | fingerprint -}}
+        <link rel="stylesheet" media="print" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
