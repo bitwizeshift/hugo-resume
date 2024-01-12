@@ -1,2 +1,46 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+{{- with .Params.Contact -}}
+  {{- with .Github -}}
+    <aside class="avatar">
+      <img src="https://github.com/{{- . -}}.png?size=512" />
+    </aside>
+  {{- end -}}
+{{- end -}}
+<h1>{{ .Title | markdownify }}</h1>
+{{- with .Params.Roles -}}
+  <section class="roles">
+    <ul class="role-list">
+      {{- range $index, $element := . -}}
+      <li>{{- $element -}}</li>
+      {{- end -}}
+    </ul>
+  </section>
+{{- end -}}
+{{- with .Params.Location -}}
+  <section class="location">
+    <p>{{- printf "In %s" . -}}</p>
+  </section>
+{{- end -}}
+{{- with .Params.Contact -}}
+  <section class="contact">
+    <ul class="contact-list">
+      {{- with .Phone -}}
+        <li class="contact phone"><a href="tel:{{- . -}}">{{- . -}}</a></li>
+      {{- end -}}
+      {{- with .Email -}}
+        <li class="contact email"><a href="mailto:{{- . -}}">{{- . -}}</a></li>
+      {{- end -}}
+      {{- with .Website -}}
+        <li class="contact website"><a href="{{- . -}}">{{- . -}}</a></li>
+      {{- end -}}
+      {{- with .Stackoverflow -}}
+        <li class="contact stackoverflow"><a href="https://stackoverflow.com/users/{{- . -}}">user:{{- . -}}</a></li>
+      {{- end -}}
+      {{- with .Github -}}
+        <li class="contact github"><a href="https://github.com/{{- . -}}">@{{- . -}}</a></li>
+      {{- end -}}
+      {{- with .Linkedin -}}
+        <li class="contact linkedin"><a href="https://linkedin.com/{{- . -}}">{{- . -}}</a></li>
+      {{- end -}}
+    </ul>
+  </section>
+{{- end -}}

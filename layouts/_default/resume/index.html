@@ -1,0 +1,13 @@
+{{- define "main" -}}
+<h1>{{- .Title -}}</h1>
+<h2>Summary</h2>
+{{ .Content }}
+<h2>Skills</h2>
+<h2>Professional Experience</h2>
+<h2>Teaching Experience</h2>
+<h2>Education</h2>
+<h2>Recent Open Source Contributions</h2>
+
+{{ . | debug.Dump }}
+
+{{- end -}}

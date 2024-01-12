@@ -1,22 +1,227 @@
+:root {
+  font-size: 9pt;
+}
+
 body {
   color: #222;
-  font-family: sans-serif;
   line-height: 1.5;
-  margin: 1rem;
-  max-width: 768px;
-}
-
-header {
-  border-bottom: 1px solid #222;
-  margin-bottom: 1rem;
-}
-
-footer {
-  border-top: 1px solid #222;
-  margin-top: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji"
 }
 
 a {
-  color: #00e;
+  color: #2e75b5;
   text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h2 {
+  overflow: hidden;
+  font-size: 11pt;
+}
+
+.heading {
+  display: inline-block;
+}
+.hr {
+  flex: 1;
+  display: inline-block;
+  margin-bottom: 7.5pt;
+  margin-left: 0.5em;
+  border-bottom: 1px solid #888;
+}
+
+.flex {
+  display: flex;
+}
+
+
+.avatar {
+  margin-top: -75px;
+}
+
+.avatar img {
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+  border: 2px solid #888;
+  width: 100px;
+  height: 100px;
+}
+
+#summary h2::before,
+#professional-experience h2::before,
+#education h2::before,
+#open-source h2::before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  margin-right: 5px;
+  display: inline-block;
+  color: #222;
+  width: 1em;
+}
+#summary h2::before {
+  content: '\f2be';
+}
+
+#professional-experience h2::before {
+  content: '\f1ad'
+}
+
+#education h2::before {
+  content: '\f19d'
+}
+#open-source h2::before {
+  content: '\e802'
+}
+
+.section-header {
+  padding-top: 0.5em;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 18pt;
+}
+
+.location p {
+  color: #7f7f7f;
+  text-align: center;
+}
+.roles {
+  color: #2e75b5;
+  text-align: center;
+}
+.roles ul {
+  text-align: center;
+  display: block;
+}
+.roles ul > li {
+  display: inline-block;
+  padding-right: 5px;
+}
+.roles ul > li::after {
+  display: inline-block;
+  padding-left: 5px;
+  content: '|';
+}
+.roles ul > li:last-child::after {
+  display: inline-block;
+  content: none;
+}
+
+h1 {
+  font-weight: lighter
+}
+
+/* "Invisible" so that LLM and computer vision can still read it */
+#invisible {
+  top: 0;
+  left: 0;
+  position: absolute;
+  margin: 0;
+  padding: 5px;
+  opacity: 3% !important;
+}
+
+article.resume {
+  padding: 3cm 3cm;
+  position: relative;
+}
+
+section.contact > ul.contact-list {
+  display: block;
+  text-align: center;
+}
+li.contact {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.contact > a::before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  margin-right: 5px;
+  display: inline-block;
+  color: black;
+}
+
+li.contact {
+  margin-right: 0.5em;
+  padding-right: 0.5em;
+  border-right: 1px solid black;
+}
+li.contact:nth-child(3) {
+  border: none;
+}
+li.contact > a:nth-child(3)::after {
+  content: "\A"; /* Insert a line break character */
+  white-space: pre; /* Preserve white spaces */
+  display: block; /* Make the pseudo-element a block element */
+}
+
+li.contact:last-child {
+  border: none;
+}
+
+#summary > ul {
+  padding-left: 1em;
+}
+
+.contact.phone > a::before {
+  content: '\e800'
+}
+
+.contact.github > a::before {
+  content: '\f09b'
+}
+
+.contact.stackoverflow > a::before {
+  content: '\f16c'
+}
+
+.contact.email > a::before {
+  content: '\e801'
+}
+
+.contact.website > a::before {
+  content: '\f08e'
+}
+
+.contact.linkedin > a::before {
+  content: '\f30c'
+}
+
+@page { size: auto;  margin: 0mm; }
+@media screen {
+
+  article.resume {
+    width: 8.5in;
+    margin: 2cm auto;
+  }
+  body {
+    background:#dfe6e9;
+  }
+  .resume {
+    margin-top: 5cm;
+    height: 11in;
+    margin: 100px auto;
+  }
+  .paper-shadow {
+    box-shadow:
+      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+      0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12)
+    ;
+
+    min-height: 200px;
+    width: 50vw;
+    background: white;
+  }
 }

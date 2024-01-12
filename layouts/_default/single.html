@@ -1,10 +1,31 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+<section id="summary">
+  <header class="section-header flex">
+    <h2 class="heading">Summary</h2><span class="hr"></span>
+  </header>
 
   {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+
+  {{/*  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+  {{ $dateHuman := .Date | time.Format ":date_long" }}
+  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>  */}}
+</section>
+<section id="professional-experience">
+  <header class="section-header flex">
+    <h2 class="heading">Work Experience</h2><span class="hr"></span>
+  </header>
+</section>
+
+<section id="education">
+  <header class="section-header flex">
+    <h2 class="heading">Education</h2><span class="hr"></span>
+  </header>
+</section>
+
+<section id="open-source">
+  <header class="section-header flex">
+    <h2 class="heading">Recent Open Source Contributions</h2><span class="hr"></span>
+  </header>
+</section>
+
 {{ end }}
