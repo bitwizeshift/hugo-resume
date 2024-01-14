@@ -1,0 +1,38 @@
+{{- $dateFormat := site.Params.dateFormat -}}
+{{- if not $dateFormat -}}{{- $dateFormat = "January 2006" -}}{{- end -}}
+
+<aside class="date-container">
+  {{- $start := index . "start-date" -}}
+  {{- $end := index . "end-date" -}}
+  {{- if eq $start $end -}}
+    {{- $date := dateFormat "2006-01-02" $start -}}
+    {{- $machine := time.Format "2006-01-02T15:04:05Z07:00" $date -}}
+    {{- $time := time.Format $dateFormat $date -}}
+    <time class="entry-start-date date" datetime="{{- $machine -}}" title="{{- $time -}}">
+      {{- $time -}}
+    </time>
+  {{- else -}}
+    {{- with index . "start-date" -}}
+      {{- $date := dateFormat "2006-01-02" . -}}
+      {{- $machine := time.Format "2006-01-02T15:04:05Z07:00" $date -}}
+      {{- $time := time.Format $dateFormat $date -}}
+      <time class="entry-start-date date" datetime="{{- $machine -}}" title="{{- $time -}}">
+        {{- $time -}}
+      </time>
+    {{- end -}}
+    <span> &mdash; </span>
+    {{- with index . "end-date" -}}
+      {{- $date := dateFormat "2006-01-02" . -}}
+      {{- $machine := time.Format "2006-01-02T15:04:05Z07:00" $date -}}
+      {{- $time := time.Format $dateFormat $date -}}
+      <time class="entry-end-date date" datetime="{{- $machine -}}" title="{{- $time -}}">
+        {{- $time -}}
+      </time>
+    {{- else -}}
+      {{- $now := time.Now -}}
+      {{- $machine := time.Format "2006-01-02T15:04:05Z07:00" $now -}}
+      {{- $time := time.Format $dateFormat $now -}}
+      <time class="entry-end-date date" datetime="{{- $machine -}}" title="{{- $time -}}">Present</time>
+    {{- end -}}
+  {{- end -}}
+</aside>

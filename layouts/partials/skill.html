@@ -1,0 +1,10 @@
+<div class="skill-list">
+  {{- $classes := "skill-group" -}}
+  {{- with .Params.Icon -}}
+    {{- $classes = printf "skill-group icon-%s" . -}}
+  {{- end -}}
+  <h2 class="{{- $classes -}}">{{- .Title -}}</h2>
+  <div class="skill-breakdown">
+    {{- .Content -}}
+  </div>
+</div>

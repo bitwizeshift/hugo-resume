@@ -1,0 +1,43 @@
+{{- $dateFormat := site.Params.dateFormat -}}
+{{- if not $dateFormat -}}{{- $dateFormat = "January 2006" -}}{{- end -}}
+
+<section class="project project-history resume-entry">
+  <header class="project-header">
+    {{- $role := index .Params "role" -}}
+    {{- $license := index .Params "license" -}}
+    {{- $icon := index .Params "icon" -}}
+    <div class="flex">
+      {{- with .Title -}}
+        {{- $classes := "resume-entry-title role-title" -}}
+        {{- with $icon -}}
+        {{-   $classes = printf "resume-entry-title role-title icon-%s" . -}}
+        {{- end -}}
+        <h3 class="{{- $classes -}}">{{- . -}}</h3>
+      {{- end -}}
+      <div class="spacer project-details">
+        <ul class="horizontal secondary-content bar-separated">
+          {{- with index .Params "role" -}}
+            <li><p class="project-role">{{- . -}}</p></li>
+          {{- end -}}
+          {{- with index .Params "license" -}}
+            <li><p class="project-license">{{- . -}}</p></li>
+          {{- end -}}
+        </ul>
+      </div>
+      {{- partial "date-range.html" .Params -}}
+    </div>
+    {{- with index .Params "description" -}}
+      <div class="project-description flex">
+        <p>{{- . -}}</p>
+      </div>
+    {{- end -}}
+    <ul class="horizontal project-skill-list">
+      {{- range .Params.skills -}}
+        <li class="skill">{{- . -}}</li>
+      {{- end -}}
+    </ul>
+  </header>
+  <article class="project-duties markdown-content">
+    {{- .Content | markdownify -}}
+  </article>
+</section>

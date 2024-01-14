@@ -1,0 +1,36 @@
+{{- define "main" -}}
+
+{{- $summaryClasses := "heading" -}}
+{{- with .Params.Icon }}
+{{-   $summaryClasses = printf "heading icon-%v" . -}}
+{{- end -}}
+<section id="summary" class="markdown-content resume-entry">
+  <header class="section-header flex">
+    <h2 class="{{- $summaryClasses -}}">Summary</h2><span class="hr"></span>
+  </header>
+  {{ .Content }}
+</section>
+
+{{- range .Sections -}}
+  <section id="{{- .Title | urlize -}}">
+    <header class="section-header flex">
+      {{- $classes := "heading" -}}
+      {{- with .Params.Icon -}}
+        {{- $classes = printf "heading icon-%s" . -}}
+      {{- end -}}
+      <h2 class="{{- $classes -}}">{{- .Title -}}</h2><span class="hr"></span>
+    </header>
+    <article class="section-article">
+      {{- range .Pages -}}
+        {{- $partialFile := printf "%s.html" .Type -}}
+        {{ if templates.Exists ( printf "partials/%s" $partialFile ) }}
+          {{ partial $partialFile . }}
+        {{ else }}
+          {{- .Content -}}
+        {{ end }}
+      {{- end -}}
+    </article>
+  </section>
+{{- end -}}
+
+{{ end }}

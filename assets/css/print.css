@@ -10,6 +10,29 @@
 @page :right {
   margin-left: 4cm;
 }
+@page {
+  margin: 2cm 0mm;
+  content: none;
+}
+@page:first {
+  margin-top: 0;
+}
+@page:left{
+  @bottom-left {
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+@page:right{
+  @bottom-left {
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+footer {
+  display: none;
+}
+.pagebreak {
+  page-break-before: always;
+}
 
 .fn {
   float: footnote;
@@ -21,4 +44,7 @@
 
 h1 {
   counter-reset: footnote;
+}
+.resume-entry {
+  page-break-inside: avoid;
 }

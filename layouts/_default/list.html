@@ -1,8 +1,18 @@
-{{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+{{- define "main" -}}
+
+{{/*  {{- range .Pages -}}
+  <section id="{{- .Title | urlize -}}">
+    <header class="section-header flex">
+      {{- $classes := "heading" -}}
+      {{- with .Params.Icon -}}
+        {{- $classes = printf "heading icon-%s" . -}}
+      {{- end -}}
+      <h2 class="{{- $classes -}}">{{- .Title -}}</h2><span class="hr"></span>
+    </header>
+    <article class="section-article flex">
+      {{- .Content -}}
+    </article>
+  </section>
+{{- end -}}  */}}
+
 {{ end }}

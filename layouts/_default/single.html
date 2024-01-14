@@ -1,31 +1,25 @@
-{{ define "main" }}
-<section id="summary">
-  <header class="section-header flex">
-    <h2 class="heading">Summary</h2><span class="hr"></span>
-  </header>
+{{- define "main" -}}
 
-  {{ .Content }}
+Unused
 
-  {{/*  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>  */}}
-</section>
-<section id="professional-experience">
-  <header class="section-header flex">
-    <h2 class="heading">Work Experience</h2><span class="hr"></span>
-  </header>
-</section>
+{{/*  {{- $summaryClasses := "heading" -}}
+{{- with .Params.Icon }}
+{{-   $summaryClasses = printf "heading icon-%v" . -}}
+{{- end -}}
 
-<section id="education">
+{{- range .Pages -}}
+<section id="{{- .Title | urlize -}}">
   <header class="section-header flex">
-    <h2 class="heading">Education</h2><span class="hr"></span>
+    {{- $classes := "heading" -}}
+    {{- with .Params.Icon -}}
+      {{- $classes = printf "heading icon-%s" . -}}
+    {{- end -}}
+    <h2 class="{{- $classes -}}">{{- .Title -}}</h2><span class="hr"></span>
   </header>
+  <article class="section-article flex">
+    {{- .Content -}}
+  </article>
 </section>
-
-<section id="open-source">
-  <header class="section-header flex">
-    <h2 class="heading">Recent Open Source Contributions</h2><span class="hr"></span>
-  </header>
-</section>
+{{- end -}}  */}}
 
 {{ end }}

@@ -6,3 +6,6 @@ title = 'My New Hugo Site'
   [module.hugoVersion]
     extended = false
     min = "0.116.0"
+
+[markup.goldmark.renderer]
+unsafe= true

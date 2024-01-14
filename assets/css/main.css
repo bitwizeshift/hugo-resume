@@ -50,33 +50,6 @@ h2 {
   height: 100px;
 }
 
-#summary h2::before,
-#professional-experience h2::before,
-#education h2::before,
-#open-source h2::before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  margin-right: 5px;
-  display: inline-block;
-  color: #222;
-  width: 1em;
-}
-#summary h2::before {
-  content: '\f2be';
-}
-
-#professional-experience h2::before {
-  content: '\f1ad'
-}
-
-#education h2::before {
-  content: '\f19d'
-}
-#open-source h2::before {
-  content: '\e802'
-}
-
 .section-header {
   padding-top: 0.5em;
 }
@@ -140,15 +113,6 @@ li.contact {
   display: inline-block;
 }
 
-.contact > a::before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  margin-right: 5px;
-  display: inline-block;
-  color: black;
-}
-
 li.contact {
   margin-right: 0.5em;
   padding-right: 0.5em;
@@ -171,31 +135,142 @@ li.contact:last-child {
   padding-left: 1em;
 }
 
-.contact.phone > a::before {
-  content: '\e800'
+.markdown-content > ul {
+  padding-left: 1em;
+}
+.markdown-content > ul > li {
+  font-size: 8pt;
 }
 
-.contact.github > a::before {
-  content: '\f09b'
+footer {
+  width: 100%;
+  padding: 1em;
+  color: #fff;
+  background-color: #000;
+  text-align: center;
 }
 
-.contact.stackoverflow > a::before {
-  content: '\f16c'
+.employment-header,
+.project-header {
+  display: block;
+  padding: 6pt 0 2pt 0;
+}
+.employment-duties {
+  font-size: 8pt;
+}
+.date-container {
+  font-size: 9pt;
+  font-style: italic;
+  color: #1f4e79;
+}
+ul.horizontal {
+  display: inline-block;
+}
+ul.horizontal > li {
+  display: inline-block;
+  margin-right: 3pt;
+}
+ul.horizontal > li:last-child {
+  margin-right: 0;
+}
+ul.horizontal > li > * {
+  margin-left: 3pt;
 }
 
-.contact.email > a::before {
-  content: '\e801'
+.secondary-content {
+  color: #525252;
+}
+ul.horizontal > li > *{
+  display: inline-block;
+
+}
+.bar-separated > li::before {
+  content: '|';
+  display: inline-block;
+}
+.skill-list {
+  width: 32.9%;
+  vertical-align: top;
+  display: inline-block;
+  margin-bottom: 3pt;
+  text-align: center;
+}
+h2.skill-group {
+  margin: 0 auto;
+  margin-bottom: 2pt;
+}
+.project-description > p {
+  font-style: italic;
+  color: #525252;
 }
 
-.contact.website > a::before {
-  content: '\f08e'
+/* ul.horizontal.employment-skill-list > li {
+  margin-left: 2px;
+} */
+.employment-skill-list {
+  font-size: 8pt;
+}
+.skill-breakdown > ul {
+  display: inline-block;
+  width: 100%;
+}
+.skill-breakdown > ul > li {
+  list-style: none;
+  display: inline-block;
+  padding: 0 5px;
+  margin: 2px 1px;
+  border-radius: 5pt;
+  background-color: #eee;
+  border: 1px solid #eee;
+}
+.skill-breakdown > ul > li::after {
+  content: ''
+}
+.skill-breakdown > ul > li:last-child:after {
+  content: ''
 }
 
-.contact.linkedin > a::before {
-  content: '\f30c'
+h2.skill-group {
+  font-size: 10pt;
+  text-align: center;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-2 {
+  flex: 2;
 }
 
-@page { size: auto;  margin: 0mm; }
+.skill {
+  padding: 0 5px;
+  border-radius: 5pt;
+  background-color: #eee;
+  border: 1px solid #eee;
+  box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+}
+section.employment {
+  break-after: auto;
+}
+
+.resume-entry-title {
+  margin-right: 3pt;
+}
+.icon-svg {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+h3.role-title {
+  font-size: 9pt;
+}
+.spacer {
+  display: inline-block;
+  flex: 1;
+}
+
 @media screen {
 
   article.resume {
@@ -207,7 +282,7 @@ li.contact:last-child {
   }
   .resume {
     margin-top: 5cm;
-    height: 11in;
+    /* height: 11in; */
     margin: 100px auto;
   }
   .paper-shadow {

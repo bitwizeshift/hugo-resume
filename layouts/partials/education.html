@@ -1,0 +1,40 @@
+
+<section class="education education-history resume-entry">
+  <header class="education-header">
+    {{- $institution  := index .Params "institution"  -}}
+    {{- $location := index .Params "location" -}}
+    {{- $icon := index .Params "icon" -}}
+    {{- range $index, $degree := .Params.Degrees -}}
+      <div class="flex">
+        {{- with index $degree "title" -}}
+          {{- $classes := "resume-entry-title degree-title" -}}
+          {{- with $icon -}}
+          {{-   $classes = printf "resume-entry-title degree-title icon-%s" . -}}
+          {{- end -}}
+          <h3 class="{{- $classes -}}">{{- . -}}</h3>
+        {{- end -}}
+        <div class="spacer education-details">
+          {{- if eq $index 0 -}}
+            <ul class="horizontal secondary-content bar-separated">
+              {{- with $institution -}}
+                <li><p class="education-institution">{{- . -}}</p></li>
+              {{- end -}}
+              {{- with $location -}}
+                <li><address class="education-location">{{- . -}}</address></li>
+              {{- end -}}
+            </ul>
+          {{- end -}}
+        </div>
+        {{- partial "date-range.html" $degree -}}
+      </div>
+    {{- end -}}
+    <ul class="horizontal employment-skill-list">
+      {{- range .Params.skills -}}
+        <li class="skill">{{- . -}}</li>
+      {{- end -}}
+    </ul>
+  </header>
+  <article class="education-duties markdown-content">
+    {{- .Content | markdownify -}}
+  </article>
+</section>

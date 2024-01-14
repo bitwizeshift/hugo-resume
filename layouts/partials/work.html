@@ -1,0 +1,42 @@
+{{- $dateFormat := site.Params.dateFormat -}}
+{{- if not $dateFormat -}}{{- $dateFormat = "January 2006" -}}{{- end -}}
+
+<section class="employment work-history resume-entry">
+  <header class="employment-header">
+    {{- $company  := index .Params "company"  -}}
+    {{- $location := index .Params "location" -}}
+    {{- $icon := index .Params "icon" -}}
+    {{- range $index, $role := .Params.Roles -}}
+      <div class="flex">
+        {{- with index $role "title" -}}
+          {{- $classes := "resume-entry-title role-title" -}}
+          {{- with $icon -}}
+          {{-   $classes = printf "resume-entry-title role-title icon-%s" . -}}
+          {{- end -}}
+          <h3 class="{{- $classes -}}">{{- . -}}</h3>
+        {{- end -}}
+        <div class="spacer employment-details">
+          {{- if eq $index 0 -}}
+            <ul class="horizontal secondary-content bar-separated">
+              {{- with $company -}}
+                <li><p class="employment-company">{{- . -}}</p></li>
+              {{- end -}}
+              {{- with $location -}}
+                <li><address class="employment-location">{{- . -}}</address></li>
+              {{- end -}}
+            </ul>
+          {{- end -}}
+        </div>
+        {{- partial "date-range.html" $role -}}
+      </div>
+    {{- end -}}
+    <ul class="horizontal employment-skill-list">
+      {{- range .Params.skills -}}
+        <li class="skill">{{- . -}}</li>
+      {{- end -}}
+    </ul>
+  </header>
+  <article class="employment-duties markdown-content">
+    {{- .Content | markdownify -}}
+  </article>
+</section>
