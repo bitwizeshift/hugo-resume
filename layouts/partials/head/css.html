@@ -1,10 +1,14 @@
 {{- $normalize := resources.Get "css/normalize.css" | resources.ExecuteAsTemplate "css/tmp_normalize.out.css" . -}}
 {{- $font := resources.Get "css/font.css" | resources.ExecuteAsTemplate "css/tmp_font.out.css" . -}}
+{{- $override := resources.FromString "css/tmp_empty.out.css" "" -}}
+{{- with .Resources.GetMatch "style" -}}
+  {{- $override = . -}}
+{{- end -}}
 
 {{- with resources.Get "css/main.css" -}}
-  {{- $style := slice $normalize $font . | resources.Concat "css/style.css" -}}
+  {{- $style := slice $normalize $font . $override | resources.Concat "css/style.css" -}}
   {{- with $style -}}
-    {{- if eq hugo.Environment "development" -}}
+    {{- if hugo.IsDevelopment -}}
       <link rel="stylesheet" href="{{ .RelPermalink }}">
     {{- else -}}
       {{- with $style | minify | fingerprint -}}
@@ -17,7 +21,7 @@
 {{- with resources.Get "css/print.css" -}}
   {{- $style := slice $normalize $font . | resources.Concat "css/print.css" -}}
   {{- with $style -}}
-    {{- if eq hugo.Environment "development" -}}
+    {{- if hugo.IsDevelopment -}}
       <link rel="stylesheet" media="print" href="{{ .RelPermalink }}">
     {{- else -}}
       {{- with $style | minify | fingerprint -}}

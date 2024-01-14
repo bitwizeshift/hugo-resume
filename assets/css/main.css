@@ -16,14 +16,24 @@ a:hover {
   text-decoration: underline;
 }
 
+h1 {
+  font-weight: lighter
+}
+
 h2 {
   overflow: hidden;
   font-size: 11pt;
 }
 
+header h1 {
+  text-align: center;
+  font-size: 18pt;
+}
+
 .heading {
   display: inline-block;
 }
+
 .hr {
   flex: 1;
   display: inline-block;
@@ -54,11 +64,6 @@ h2 {
   padding-top: 0.5em;
 }
 
-header h1 {
-  text-align: center;
-  font-size: 18pt;
-}
-
 .location p {
   color: #7f7f7f;
   text-align: center;
@@ -83,10 +88,6 @@ header h1 {
 .roles ul > li:last-child::after {
   display: inline-block;
   content: none;
-}
-
-h1 {
-  font-weight: lighter
 }
 
 /* "Invisible" so that LLM and computer vision can still read it */
@@ -204,9 +205,6 @@ h2.skill-group {
   color: #525252;
 }
 
-/* ul.horizontal.employment-skill-list > li {
-  margin-left: 2px;
-} */
 .employment-skill-list {
   font-size: 8pt;
 }

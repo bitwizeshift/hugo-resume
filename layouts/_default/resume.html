@@ -23,11 +23,26 @@
     <article class="section-article">
       {{- range .Pages -}}
         {{- $partialFile := printf "%s.html" .Type -}}
-        {{ if templates.Exists ( printf "partials/%s" $partialFile ) }}
-          {{ partial $partialFile . }}
-        {{ else }}
-          {{- .Content -}}
-        {{ end }}
+        {{- $partialPath := printf "partials/%s" $partialFile -}}
+        {{- $output := printf "partials/tmp_%s.out.css" .Type -}}
+        {{- $context := . -}}
+        {{- with .Resources.Get $partialPath -}}
+          {{- $out := . | resources.ExecuteAsTemplate $output $context -}}
+          {{- $out.Content -}}
+        {{- else -}}
+          {{- with resources.Get $partialPath -}}
+            {{- $out := . | resources.ExecuteAsTemplate $output $context -}}
+            {{- $out.Content -}}
+          {{- else -}}
+            {{- if templates.Exists ( printf "partials/sections/%s" $partialFile ) -}}
+              {{- partial (printf "sections/%s" $partialFile) . -}}
+            {{- else if templates.Exists ( printf "partials/%s" $partialFile ) -}}
+              {{- partial $partialFile . -}}
+            {{- else -}}
+              {{- .Content -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
       {{- end -}}
     </article>
   </section>
