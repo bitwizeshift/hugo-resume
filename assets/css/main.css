@@ -25,6 +25,10 @@ h2 {
   font-size: 11pt;
 }
 
+h3.skill-group {
+  font-weight: normal;
+}
+
 header h1 {
   text-align: center;
   font-size: 18pt;
