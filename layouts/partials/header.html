@@ -1,8 +1,21 @@
-{{- with .Params.Contact -}}
-  {{- with .Github -}}
+{{- $page := . -}}
+{{- with .Params.Avatar -}}
+  {{- with .Image -}}
     <aside class="avatar">
-      <img src="https://github.com/{{- . -}}.png?size=512" />
+      {{- with $page.Resources.Get . -}}
+        {{- $image := .Process "resize 100x100" -}}
+        <img src="data:{{ $image.MediaType.Type }};base64,{{ $image.Content | base64Encode }}" />
+      {{- end -}}
     </aside>
+  {{- else -}}
+    {{- with .Github -}}
+      <aside class="avatar">
+        {{- with resources.GetRemote (printf "https://github.com/%s.png" .) -}}
+          {{- $image := .Process "resize 100x100" -}}
+          <img src="data:{{ $image.MediaType.Type }};base64,{{ $image.Content | base64Encode }}" />
+        {{- end -}}
+      </aside>
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 <h1>{{ .Title | markdownify }}</h1>
