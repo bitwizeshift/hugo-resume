@@ -3,7 +3,7 @@
   {{- with .Params.Icon -}}
     {{- $classes = printf "skill-group icon-%s" . -}}
   {{- end -}}
-  <h2 class="{{- $classes -}}">{{- .Title -}}</h2>
+  <h3 class="{{- $classes -}}">{{- .Title -}}</h3>
   <div class="skill-breakdown">
     {{- .Content -}}
   </div>
