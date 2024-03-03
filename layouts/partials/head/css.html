@@ -3,6 +3,10 @@
 {{- $override := resources.FromString "css/tmp_empty.out.css" "" -}}
 {{- with .Resources.GetMatch "style" -}}
   {{- $override = . -}}
+{{- else -}}
+  {{- with resources.GetMatch "style" -}}
+    {{- $override = . -}}
+  {{- end -}}
 {{- end -}}
 
 {{- with resources.Get "css/main.css" -}}

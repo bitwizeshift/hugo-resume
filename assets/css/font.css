@@ -17,6 +17,33 @@
   }
 }
 
+@font-face {
+  font-family: 'source-sans-pro';
+  src: url('../assets/font/source-sans-pro-bold.woff2') format('woff2'),
+       url('../assets/font/source-sans-pro-bold.woff') format('woff'),
+       url('../assets/font/source-sans-pro-bold.otf') format('otf');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'source-sans-pro';
+  src: url('../assets/font/source-sans-pro-light.woff2') format('woff2'),
+       url('../assets/font/source-sans-pro-light.woff') format('woff'),
+       url('../assets/font/source-sans-pro-light.otf') format('otf');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'source-sans-pro';
+  src: url('../assets/font/source-sans-pro-regular.woff2') format('woff2'),
+       url('../assets/font/source-sans-pro-regular.woff') format('woff'),
+       url('../assets/font/source-sans-pro-regular.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 [class^="icon-"]:before,
 [class*=" icon-"]:before,
 [class^="before-icon-"]:before,
@@ -79,7 +106,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 .icon-phone:before { content: '\e800'; } /* '' */
 .icon-mail:before { content: '\e801'; } /* '' */
 .icon-flow-branch:before { content: '\e802'; } /* '' */
@@ -120,6 +146,8 @@
 .icon-link:before { content: '\e825'; } /* '' */
 .icon-home:before { content: '\e826'; } /* '' */
 .icon-users:before { content: '\e827'; } /* '' */
+.icon-download:before { content: '\e828'; } /* '' */
+.icon-globe:before { content: '\e829'; } /* '' */
 .icon-link-ext:before { content: '\f08e'; } /* '' */
 .icon-twitter:before { content: '\f099'; } /* '' */
 .icon-github-circled:before { content: '\f09b'; } /* '' */
@@ -206,6 +234,8 @@
 .icon-chrome:before { content: '\f268'; } /* '' */
 .icon-firefox-1:before { content: '\f269'; } /* '' */
 .icon-opera:before { content: '\f26a'; } /* '' */
+.icon-map-pin:before { content: '\f276'; } /* '' */
+.icon-map-o:before { content: '\f278'; } /* '' */
 .icon-universal-access:before { content: '\f29a'; } /* '' */
 .icon-question-circle-o:before { content: '\f29c'; } /* '' */
 .icon-handshake-o:before { content: '\f2b5'; } /* '' */

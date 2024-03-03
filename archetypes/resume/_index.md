@@ -2,7 +2,7 @@
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 date: {{ .Date }}
 
-location: 'anywhere, Earth'
+address: 'anywhere, Earth'
 
 roles:
   - # List some brief ways to identify yourself

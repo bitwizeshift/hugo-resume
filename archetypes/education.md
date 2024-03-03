@@ -1,7 +1,7 @@
 ---
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 institution: ''
-location: ''
+address: ''
 from-date: '{{ .Date | time.Format "2006-01" }}'
 to-date: '{{ .Date | time.Format "2006-01" }}'
 

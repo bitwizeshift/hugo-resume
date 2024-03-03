@@ -30,7 +30,7 @@ Renders a menu for the given menu ID.
     {{- $name := .Name }}
     {{- with .Identifier }}
       {{- with T . }}
-        {{- $name = . }}
+      {{- $name = . }}
       {{- end }}
     {{- end }}
     <li>

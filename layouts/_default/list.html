@@ -1,18 +1,19 @@
 {{- define "main" -}}
 
-{{/*  {{- range .Pages -}}
-  <section id="{{- .Title | urlize -}}">
-    <header class="section-header flex">
-      {{- $classes := "heading" -}}
-      {{- with .Params.Icon -}}
-        {{- $classes = printf "heading icon-%s" . -}}
-      {{- end -}}
-      <h2 class="{{- $classes -}}">{{- .Title -}}</h2><span class="hr"></span>
-    </header>
-    <article class="section-article flex">
-      {{- .Content -}}
-    </article>
-  </section>
-{{- end -}}  */}}
+{{- range .Pages -}}
+  {{- if eq .Type "resume" -}}
+    <section id="{{- .Title | urlize -}}">
+      <header class="section-header flex">
+        {{- $classes := "heading" -}}
+        {{- with .Params.Icon -}}
+          {{- $classes = printf "heading icon-%s" . -}}
+        {{- end -}}
+        <h2 class="{{- $classes -}}">
+          <a href="{{- .Permalink -}}">{{- .Title | markdownify -}}</a>
+        </h2><span class="hr"></span>
+      </header>
+    </section>
+  {{- end -}}
+{{- end -}}
 
 {{ end }}

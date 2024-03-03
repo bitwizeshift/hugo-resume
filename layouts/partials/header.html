@@ -30,7 +30,19 @@
 {{- end -}}
 {{- with .Params.Location -}}
   <section class="location">
-    <p>{{- printf "In %s" . -}}</p>
+    <ul class="location-list horizontal secondary-content contact-list">
+      {{- with .Address -}}
+        <li class="location-entry icon-map-pin">
+          {{- . -}}
+        </li>
+      {{- end -}}
+      {{- if .Remote -}}
+        <li class="location-entry icon-laptop">Remote</li>
+      {{- end -}}
+      {{- if .Relocation -}}
+        <li class="location-entry icon-globe">Relocation</li>
+      {{- end -}}
+    </ul>
   </section>
 {{- end -}}
 {{- with .Params.Contact -}}

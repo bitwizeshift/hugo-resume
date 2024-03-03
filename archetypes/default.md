@@ -2,11 +2,15 @@
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 date: {{ .Date }}
 
+location:
+  address: ''
+  remote: false
+  relocation: false
+
 contact:
   email: ""
   home: ""
   cell: ""
-  address: ""
   github: ""
   linkedin: ""
   facebook: ""

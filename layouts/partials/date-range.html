@@ -20,7 +20,7 @@
         {{- $time -}}
       </time>
     {{- end -}}
-    <span> &mdash; </span>
+    <span> &xrarr; </span>
     {{- with index . "end-date" -}}
       {{- $date := dateFormat "2006-01-02" . -}}
       {{- $machine := time.Format "2006-01-02T15:04:05Z07:00" $date -}}

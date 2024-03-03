@@ -2,7 +2,7 @@
 <section class="education education-history resume-entry">
   <header class="education-header">
     {{- $institution  := index .Params "institution"  -}}
-    {{- $location := index .Params "location" -}}
+    {{- $location := index .Params "address" -}}
     {{- $icon := index .Params "icon" -}}
     {{- range $index, $degree := .Params.Degrees -}}
       <div class="flex">
@@ -28,7 +28,7 @@
         {{- partial "date-range.html" $degree -}}
       </div>
     {{- end -}}
-    <ul class="horizontal employment-skill-list">
+    <ul class="horizontal spaced employment-skill-list">
       {{- range .Params.skills -}}
         <li class="skill">{{- . -}}</li>
       {{- end -}}
